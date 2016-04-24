@@ -1,7 +1,9 @@
 package com.edu.sample.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -29,18 +31,11 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping("dashboard")
-	public String home() {
-		// System.out.println(".......Home..........");
-		return "dashboard";
-	}
-	@RequestMapping(value = "/systemTime", method = RequestMethod.GET,produces = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(value = "/systemTime", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 	public @ResponseBody String getTime(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Date date = new Date();
-		// DateFormat dateFormat =
-		// DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG,
-		// locale);
+
 		DateFormat dateFormat = DateFormat.getDateInstance();
 		String formattedDate = dateFormat.format(date);
 
@@ -50,4 +45,12 @@ public class HomeController {
 		return formattedDate;
 	}
 
+	@RequestMapping(value = "/getYear", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Integer> getYear() {
+		List<Integer> listOfYear = new ArrayList<Integer>();
+		for (int i = 0; i <= 5; i++) {
+			listOfYear.add(i + 2010);
+		}
+		return listOfYear;
+	}
 }
