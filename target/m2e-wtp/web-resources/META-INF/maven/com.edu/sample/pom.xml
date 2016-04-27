@@ -168,8 +168,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
@@ -183,6 +183,24 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.kelveden</groupId>
+				<artifactId>maven-karma-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>runTests</id>
+						<goals>
+							<goal>start</goal>
+						</goals>
+						<configuration>
+							<configFile>full/path/to/the/file/my.custom.karma.conf.js</configFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
 		</plugins>
 	</build>
 </project>
